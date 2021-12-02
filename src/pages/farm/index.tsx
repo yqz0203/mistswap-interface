@@ -17,6 +17,7 @@ import { MIST, FLEXUSD } from '../../config/tokens'
 import Container from '../../components/Container'
 import FarmList from '../../features/onsen/FarmList'
 import Head from 'next/head'
+import Image from 'next/image'
 import Menu from '../../features/onsen/FarmMenu'
 import React, { useEffect } from 'react'
 import Search from '../../components/Search'
@@ -486,13 +487,16 @@ export default function Farm(): JSX.Element {
   })
 
   return (
-    <Container id="farm-page" className="lg:grid lg:grid-cols-4 h-full py-4 mx-auto md:py-8 lg:py-12 gap-9" maxWidth="7xl">
+    <Container id="farm-page" className="h-full py-4 mx-auto lg:grid lg:grid-cols-4 md:py-8 lg:py-12 gap-9" maxWidth="7xl">
       <Head>
         <title>Farm | Mist</title>
         <meta key="description" name="description" content="Farm MIST" />
       </Head>
-      <div className={classNames('px-3 md:px-0 lg:block md:col-span-1')} style={{ maxHeight: '40rem', backgroundImage: 'url(/mist-machine.png)', backgroundSize: 'contain', backgroundPosition: 'bottom center', backgroundRepeat: 'no-repeat' }}>
+      <div className={classNames('px-3 md:px-0 lg:block md:col-span-1')}>
         <Menu positionsLength={positions.length} />
+        <div className="relative hidden h-80 lg:block">
+          <Image className="hidden w-full lg:block" layout="fill" objectFit="contain" objectPosition="bottom" src="/mist-machine.png" alt="" />
+        </div>
       </div>
       <div className={classNames('space-y-6 col-span-4 lg:col-span-3')}>
         <Search
@@ -505,7 +509,7 @@ export default function Farm(): JSX.Element {
           }}
         />
 
-        <div className="hidden md:block flex items-center text-lg font-bold text-high-emphesis whitespace-nowrap">
+        <div className="flex items-center hidden text-lg font-bold md:block text-high-emphesis whitespace-nowrap">
           Farms{' '}
           <div className="w-full h-0 ml-4 font-bold bg-transparent border border-b-0 border-transparent rounded text-high-emphesis md:border-gradient-r-blue-pink-dark-800 opacity-20"></div>
         </div>
